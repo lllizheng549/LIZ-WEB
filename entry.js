@@ -16,7 +16,8 @@ const doorFrames = [
     "images/entry/door-01.png",
     "images/entry/door-02.png",
     "images/entry/door-03.png",
-    "images/entry/door-04.png"
+    "images/entry/door-04.png",
+    "images/entry/door-05.png"
 
 ];
 
@@ -85,6 +86,7 @@ entryButton.addEventListener("click", function () {
     ========================== */
 
     setTimeout(function () {
+        doorImage.src = doorFrames[4];
 
         entryScene.classList.remove("zoom-3");
 
