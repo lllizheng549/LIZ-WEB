@@ -108,10 +108,37 @@ body {
    When entering
 ========================= */
 
-.entry-page.entering .entry-scene {
+/* =========================
+   Zoom animation
+========================= */
+
+.entry-scene {
+    transform-origin: 30% 65%;
+
+    transition:
+        transform 0.7s
+        cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+
+.entry-scene.zoom-1 {
+    transform: scale(1.8);
+}
+
+
+.entry-scene.zoom-2 {
+    transform: scale(3);
+}
+
+
+.entry-scene.zoom-3 {
     transform: scale(5);
 }
 
+
+.entry-scene.zoom-final {
+    transform: scale(10);
+}
 
 /* Hide button while entering */
 
