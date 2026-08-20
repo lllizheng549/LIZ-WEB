@@ -54,7 +54,7 @@ entryButton.addEventListener("click", function () {
             doorImage.src =
                 doorFrames[frame];
 
-        }, 150);
+        }, 400);
 
 
     /* =========================
@@ -65,7 +65,7 @@ entryButton.addEventListener("click", function () {
 
         entryPage.classList.add("entering");
 
-    }, 500);
+    }, 700);
 
 
     /* =========================
@@ -76,17 +76,17 @@ entryButton.addEventListener("click", function () {
 
         entryPage.classList.add("white");
 
-    }, 2200);
+    }, 2500);
 
 
     /* =========================
-       Show homepage
+       Go to homepage
     ========================== */
 
     setTimeout(function () {
 
-        entryPage.classList.add("home");
+        window.location.href = "home.html";
 
-    }, 2800);
+    }, 3300);
 
 });
