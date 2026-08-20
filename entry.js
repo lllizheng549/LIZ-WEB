@@ -4,6 +4,9 @@ const entryButton =
 const entryPage =
     document.getElementById("entryPage");
 
+const entryScene =
+    document.getElementById("entryScene");
+
 const doorImage =
     document.getElementById("doorImage");
 
@@ -14,11 +17,8 @@ let isEntering = false;
 const doorFrames = [
 
     "images/entry/door-01.png",
-
     "images/entry/door-02.png",
-
     "images/entry/door-03.png",
-
     "images/entry/door-04.png"
 
 ];
@@ -32,51 +32,67 @@ entryButton.addEventListener("click", function () {
 
 
     /* =========================
-       Door animation
+       Disable button
     ========================== */
 
-    let frame = 0;
-
-
-    const doorAnimation =
-        setInterval(function () {
-
-            frame++;
-
-            if (frame >= doorFrames.length) {
-
-                clearInterval(doorAnimation);
-
-                return;
-            }
-
-
-            doorImage.src =
-                doorFrames[frame];
-
-        }, 400);
+    entryButton.style.pointerEvents = "none";
 
 
     /* =========================
-       Start zoom
+       Frame 1
+    ========================== */
+
+    doorImage.src = doorFrames[0];
+
+
+    /* =========================
+       Frame 2
     ========================== */
 
     setTimeout(function () {
 
-        entryPage.classList.add("entering");
+        doorImage.src = doorFrames[1];
+
+        entryScene.classList.add("zoom-1");
 
     }, 700);
 
 
     /* =========================
-       White transition
+       Frame 3
     ========================== */
 
     setTimeout(function () {
 
-        entryPage.classList.add("white");
+        doorImage.src = doorFrames[2];
 
-    }, 2500);
+        entryScene.classList.add("zoom-2");
+
+    }, 1400);
+
+
+    /* =========================
+       Frame 4
+    ========================== */
+
+    setTimeout(function () {
+
+        doorImage.src = doorFrames[3];
+
+        entryScene.classList.add("zoom-3");
+
+    }, 2100);
+
+
+    /* =========================
+       Final zoom
+    ========================== */
+
+    setTimeout(function () {
+
+        entryScene.classList.add("zoom-final");
+
+    }, 2800);
 
 
     /* =========================
@@ -87,6 +103,10 @@ entryButton.addEventListener("click", function () {
 
         window.location.href = "home.html";
 
+    }, 4300);
+
+});
     }, 3300);
 
 });
+
