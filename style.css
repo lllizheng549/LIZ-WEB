@@ -85,7 +85,7 @@ body {
 ========================= */
 
 .menu-content {
-    padding: 65px 24px 40px 24px;
+    padding: 70px 24px 40px 24px;
 
     display: flex;
     flex-direction: column;
@@ -126,7 +126,7 @@ body {
 }
 
 .menu-space.small{
-    height: 12px;
+    height: 18px;
 }
 
 
