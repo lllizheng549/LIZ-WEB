@@ -105,18 +105,15 @@ body {
 }
 
 .menu-content a.large {
-    font-size: 18px;
+    font-size: 19px;
 }
 
-.menu-content a.small {
-    font-size: 8px;
-}
 
 .menu-content a.dot::before {
-    content: "· ";
+    content: "·_";
 }
 .menu-content a.space::before {
-    content: "  ";
+    content: "__";
 }
 
 .menu-content a:hover {
@@ -124,9 +121,14 @@ body {
 }
 
 
-.menu-space {
-    height: 24px;
+.menu-space.large{
+    height: 26px;
 }
+
+.menu-space.small{
+    height: 12px;
+}
+
 
 
 /* =========================
