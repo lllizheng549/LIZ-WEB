@@ -110,10 +110,10 @@ body {
 
 
 .menu-content a.dot::before {
-    content: "·_";
+    content: "·";
 }
 .menu-content a.space::before {
-    content: "__";
+    content: "_";
 }
 
 .menu-content a:hover {
