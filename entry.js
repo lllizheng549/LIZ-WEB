@@ -213,92 +213,129 @@ setTimeout(function () {
                     1
                 );
 
+/* =========================
+   Continuous zoom
+========================= */
 
-            /* =========================
-               Continuous zoom
-            ========================== */
+/*
+   During the GIF:
+   NO ZOOM.
 
-            /*
-               GIF duration:
-               25 frames / 30fps
-               ≈ 0.83 seconds
-            */
+   Keep the original scale.
+*/
 
-
-            /*
-               Scale when door is fully open.
-
-               During the GIF,
-               the camera only moves
-               a little.
-            */
-
-            const openingScale = 1.5;
+let scale;
 
 
-            let scale;
+if (
+    elapsed <= doorGifDuration
+) {
+
+    /*
+       Door is opening.
+
+       Camera stays completely still.
+    */
+
+    scale = startScale;
+
+}
+
+else {
+
+    /*
+       Door is fully open
+       and is now holding on door-05.
+
+       Start Zoom from scale 1.
+    */
+
+    const p =
+        Math.min(
+            (
+                elapsed -
+                doorGifDuration
+            )
+            /
+            (
+                animationDuration -
+                doorGifDuration
+            ),
+            1
+        );
 
 
-            if (
-                elapsed <= doorGifDuration
-            ) {
+    /*
+       First part:
+       constant speed.
 
-                /*
-                   Door is opening.
+       After that:
+       gradually accelerate.
+    */
 
-                   Slow, gentle movement.
-                */
+    const accelerationStart = 0.25;
 
-                const p =
-                    elapsed /
-                    doorGifDuration;
+    let eased;
 
 
-                scale =
-                    startScale +
-                    (
-                        openingScale -
-                        startScale
-                    ) * p;
+    if (
+        p <= accelerationStart
+    ) {
 
-            }
+        /*
+           Constant speed.
+        */
 
-            else {
+        eased = p;
 
-                /*
-                   Door is fully open.
+    }
 
-                   Continue zooming and
-                   gradually accelerate.
-                */
+    else {
 
-                const p =
-                    (
-                        elapsed -
-                        doorGifDuration
-                    )
-                    /
-                    (
-                        animationDuration -
-                        doorGifDuration
-                    );
+        /*
+           Gradual acceleration.
+        */
+
+        const accelerationProgress =
+            (
+                p -
+                accelerationStart
+            )
+            /
+            (
+                1 -
+                accelerationStart
+            );
 
 
-                /*
-                   Smooth acceleration.
-                */
+        const accelerated =
+            accelerationProgress *
+            accelerationProgress;
 
-                const eased =
-                    1 - Math.pow(1 - p, 2);
 
-                scale =
-                    openingScale +
-                    (
-                        finalScale -
-                        openingScale
-                    ) * eased;
+        /*
+           Keep the transition continuous.
+        */
 
-            }
+        eased =
+            accelerationStart +
+            (
+                1 -
+                accelerationStart
+            ) *
+            accelerated;
+
+    }
+
+
+    scale =
+        startScale +
+        (
+            finalScale -
+            startScale
+        ) * eased;
+
+}
 
 
             entryScene.style.transform =
