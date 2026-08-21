@@ -28,20 +28,55 @@ let isDoorHovering = false;
 ========================= */
 
 /*
-   Total duration of the Entry zoom.
+   Total Entry zoom duration.
 
-   3000 = 3 seconds
+   2500 = 2.5 seconds
 */
 
-const animationDuration = 4500;
+const animationDuration = 2500;
+
+
+/*
+   GIF duration.
+
+   25 frames / 30fps
+   ≈ 0.833 seconds
+*/
+
+const doorGifDuration = 850;
+
+
+/*
+   Zoom scale
+*/
+
+const startScale = 1;
+
+const finalScale = 20;
+
+
+/*
+   Scale when the door has finished opening.
+
+   The camera only moves a little
+   while the door is opening.
+*/
+
+const openingScale = 1.5;
 
 
 /* =========================
-   Door opening GIF
+   Door GIF
 ========================= */
 
 const doorOpenGif =
     "images/entry/door-open.gif";
+
+const doorClosedImage =
+    "images/entry/door-01.png";
+
+const doorOpenImage =
+    "images/entry/door-05.png";
 
 
 /* =========================
@@ -58,8 +93,9 @@ doorHotspot.addEventListener(
 
         isDoorHovering = true;
 
+
         /*
-           Start GIF from frame 1
+           Start GIF from the beginning.
         */
 
         doorHoverImage.style.opacity = "1";
@@ -71,31 +107,27 @@ doorHotspot.addEventListener(
 
 
         /*
-           GIF:
-           25 frames / 30fps
-           ≈ 0.83 seconds
-
-           After playback, hold on door-05.
+           After GIF finishes,
+           hold on door-05.
         */
 
         setTimeout(function () {
 
-            /*
-               Make sure the mouse is
-               still inside the door area.
-            */
-
-            if (isDoorHovering) {
+            if (
+                isDoorHovering &&
+                !isEntering
+            ) {
 
                 doorHoverImage.src =
-                    "images/entry/door-05.png";
+                    doorOpenImage;
 
             }
 
-        }, 850);
+        }, doorGifDuration);
 
     }
 );
+
 
 /* =========================
    Door mouse leave
@@ -109,8 +141,8 @@ doorHotspot.addEventListener(
 
 
         /*
-           Immediately return to
-           the closed door image.
+           Immediately return
+           to the closed door.
         */
 
         doorHoverImage.style.opacity = "0";
@@ -122,41 +154,6 @@ doorHotspot.addEventListener(
 
 
 /* =========================
-   Zoom door frames
-========================= */
-
-const doorFrames = [
-
-    "images/entry/door-02.png",
-    "images/entry/door-03.png",
-    "images/entry/door-04.png",
-    "images/entry/door-05.png"
-
-];
-
-
-
-
-const frameTimes = [
-    0.00,
-    0.083,
-    0.167,
-    0.250,
-];
-
-
-
-
-/* =========================
-   Zoom settings
-========================= */
-
-const startScale = 1;
-
-const finalScale = 20;
-
-
-/* =========================
    ENTRY click
 ========================= */
 
@@ -164,20 +161,24 @@ entryButton.addEventListener(
     "click",
     function () {
 
-        /*
-           Prevent double clicking.
-        */
-
         if (isEntering) return;
 
         isEntering = true;
 
+        isDoorHovering = false;
+
 
         /*
-           Stop the door hover effect.
+           Disable ENTRY button.
         */
 
-        isDoorHovering = false;
+        entryButton.style.pointerEvents =
+            "none";
+
+
+        /*
+           Hide hover GIF first.
+        */
 
         doorHoverImage.style.opacity = "0";
 
@@ -185,13 +186,19 @@ entryButton.addEventListener(
 
 
         /*
-           Disable ENTRY button
-           only after the animation starts.
+           Use the opening GIF
+           as the main Entry animation.
         */
 
-        entryButton.style.pointerEvents =
-            "none";
+        doorImage.src =
+            doorOpenGif +
+            "?t=" +
+            Date.now();
 
+
+        /*
+           Start time of the Zoom.
+        */
 
         const startTime =
             performance.now();
@@ -203,10 +210,6 @@ entryButton.addEventListener(
                 currentTime - startTime;
 
 
-            /*
-               0 → 1
-            */
-
             const progress =
                 Math.min(
                     elapsed / animationDuration,
@@ -215,102 +218,98 @@ entryButton.addEventListener(
 
 
             /* =========================
-               Continuous zoom
+               Zoom
             ========================== */
 
-/* =========================
-   Zoom movement
-========================= */
-
-const openingProgress = 1 / 2.5;
+            let scale;
 
 
-/*
-   Scale when door is fully open.
-*/
+            if (
+                progress <
+                doorGifDuration /
+                animationDuration
+            ) {
 
-const openingScale = 2.5;
+                /*
+                   Door is opening.
 
+                   Move slowly from
+                   scale 1 → openingScale.
+                */
 
-let scale;
-
-
-if (progress <= openingProgress) {
-
-    /*
-       First 1 second:
-       slow and constant.
-    */
-
-    const p =
-        progress / openingProgress;
-
-    scale =
-        startScale +
-        (openingScale - startScale)
-        * p;
-
-} else {
-
-    /*
-       After door-05:
-       smoothly accelerate.
-    */
-
-    const p =
-        (progress - openingProgress)
-        / (1 - openingProgress);
+                const openingProgress =
+                    progress /
+                    (
+                        doorGifDuration /
+                        animationDuration
+                    );
 
 
-    /*
-       Smooth acceleration.
-    */
+                scale =
+                    startScale +
+                    (
+                        openingScale -
+                        startScale
+                    ) *
+                    openingProgress;
 
-    const eased =
-        p * p;
+            }
+
+            else {
+
+                /*
+                   Door is fully open.
+
+                   Continue toward the final
+                   zoom position.
+
+                   Smooth acceleration.
+                */
+
+                const zoomProgress =
+                    (
+                        progress -
+                        (
+                            doorGifDuration /
+                            animationDuration
+                        )
+                    )
+                    /
+                    (
+                        1 -
+                        (
+                            doorGifDuration /
+                            animationDuration
+                        )
+                    );
 
 
-    scale =
-        openingScale +
-        (finalScale - openingScale)
-        * eased;
+                /*
+                   Gradual acceleration.
+                */
 
-}
+                const eased =
+                    zoomProgress *
+                    zoomProgress;
+
+
+                scale =
+                    openingScale +
+                    (
+                        finalScale -
+                        openingScale
+                    ) *
+                    eased;
+
+            }
+
 
             entryScene.style.transform =
                 `scale(${scale})`;
 
 
             /* =========================
-               Door frame
-            ========================== */
-
-            let currentFrame = 0;
-
-
-            for (
-                let i = 0;
-                i < frameTimes.length;
-                i++
-            ) {
-
-                if (
-                    progress >= frameTimes[i]
-                ) {
-
-                    currentFrame = i;
-
-                }
-
-            }
-
-
-            doorImage.src =
-                doorFrames[currentFrame];
-
-
-            /* =========================
-               Continue animation
+               Continue
             ========================== */
 
             if (progress < 1) {
@@ -334,7 +333,7 @@ if (progress <= openingProgress) {
                             "home.html";
 
                     },
-                    250
+                    100
                 );
 
             }
@@ -342,13 +341,12 @@ if (progress <= openingProgress) {
         }
 
 
-        /*
-           Start animation.
-        */
-
         requestAnimationFrame(
             animate
         );
+
+    }
+);
 
     }
 );
