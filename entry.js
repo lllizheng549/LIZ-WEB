@@ -218,10 +218,41 @@ entryButton.addEventListener(
                Continuous zoom
             ========================== */
 
-            const scale =
-                startScale +
-                (finalScale - startScale)
-                * progress;
+           let zoomProgress;
+
+if (progress < 0.10) {
+
+    /*
+       Very beginning:
+       door-01 → door-02
+
+       Almost no zoom.
+    */
+
+    zoomProgress =
+        progress * 0.15;
+
+} else {
+
+    /*
+       After door-02:
+       gradually continue the zoom.
+    */
+
+    const adjustedProgress =
+        (progress - 0.10) / 0.90;
+
+    zoomProgress =
+        0.015 +
+        adjustedProgress * 0.985;
+
+}
+
+
+const scale =
+    startScale +
+    (finalScale - startScale)
+    * zoomProgress;
 
 
             entryScene.style.transform =
