@@ -27,18 +27,10 @@ let isDoorHovering = false;
    Animation settings
 ========================= */
 
-/*
-   Total Entry zoom duration.
-
-   2500 = 2.5 seconds
-*/
-
 const animationDuration = 2500;
 
 
 /*
-   GIF duration.
-
    25 frames / 30fps
    ≈ 0.833 seconds
 */
@@ -47,33 +39,22 @@ const doorGifDuration = 850;
 
 
 /*
-   Zoom scale
+   Zoom
 */
 
 const startScale = 1;
 
+const openingScale = 1.5;
+
 const finalScale = 20;
 
 
-/*
-   Scale when the door has finished opening.
-
-   The camera only moves a little
-   while the door is opening.
-*/
-
-const openingScale = 1.5;
-
-
 /* =========================
-   Door GIF
+   Images
 ========================= */
 
 const doorOpenGif =
     "images/entry/door-open.gif";
-
-const doorClosedImage =
-    "images/entry/door-01.png";
 
 const doorOpenImage =
     "images/entry/door-05.png";
@@ -95,7 +76,7 @@ doorHotspot.addEventListener(
 
 
         /*
-           Start GIF from the beginning.
+           Start GIF.
         */
 
         doorHoverImage.style.opacity = "1";
@@ -107,7 +88,7 @@ doorHotspot.addEventListener(
 
 
         /*
-           After GIF finishes,
+           After the GIF finishes,
            hold on door-05.
         */
 
@@ -139,10 +120,9 @@ doorHotspot.addEventListener(
 
         isDoorHovering = false;
 
-
         /*
-           Immediately return
-           to the closed door.
+           Return immediately
+           to the closed image.
         */
 
         doorHoverImage.style.opacity = "0";
@@ -169,7 +149,7 @@ entryButton.addEventListener(
 
 
         /*
-           Disable ENTRY button.
+           Disable ENTRY.
         */
 
         entryButton.style.pointerEvents =
@@ -177,7 +157,7 @@ entryButton.addEventListener(
 
 
         /*
-           Hide hover GIF first.
+           Hide hover GIF.
         */
 
         doorHoverImage.style.opacity = "0";
@@ -197,7 +177,7 @@ entryButton.addEventListener(
 
 
         /*
-           Start time of the Zoom.
+           Start Zoom.
         */
 
         const startTime =
@@ -221,29 +201,23 @@ entryButton.addEventListener(
                Zoom
             ========================== */
 
+            const gifProgress =
+                Math.min(
+                    elapsed / doorGifDuration,
+                    1
+                );
+
+
             let scale;
 
 
-            if (
-                progress <
-                doorGifDuration /
-                animationDuration
-            ) {
+            if (gifProgress < 1) {
 
                 /*
                    Door is opening.
 
-                   Move slowly from
-                   scale 1 → openingScale.
+                   Very gentle Zoom.
                 */
-
-                const openingProgress =
-                    progress /
-                    (
-                        doorGifDuration /
-                        animationDuration
-                    );
-
 
                 scale =
                     startScale +
@@ -251,7 +225,7 @@ entryButton.addEventListener(
                         openingScale -
                         startScale
                     ) *
-                    openingProgress;
+                    gifProgress;
 
             }
 
@@ -260,37 +234,34 @@ entryButton.addEventListener(
                 /*
                    Door is fully open.
 
-                   Continue toward the final
-                   zoom position.
-
-                   Smooth acceleration.
+                   Continue Zoom and
+                   gradually accelerate.
                 */
 
                 const zoomProgress =
                     (
-                        progress -
-                        (
-                            doorGifDuration /
-                            animationDuration
-                        )
-                    )
-                    /
+                        elapsed -
+                        doorGifDuration
+                    ) /
                     (
-                        1 -
-                        (
-                            doorGifDuration /
-                            animationDuration
-                        )
+                        animationDuration -
+                        doorGifDuration
+                    );
+
+
+                const p =
+                    Math.min(
+                        zoomProgress,
+                        1
                     );
 
 
                 /*
-                   Gradual acceleration.
+                   Smooth acceleration.
                 */
 
                 const eased =
-                    zoomProgress *
-                    zoomProgress;
+                    p * p;
 
 
                 scale =
@@ -322,19 +293,8 @@ entryButton.addEventListener(
 
             else {
 
-                /*
-                   Zoom finished.
-                */
-
-                setTimeout(
-                    function () {
-
-                        window.location.href =
-                            "home.html";
-
-                    },
-                    100
-                );
+                window.location.href =
+                    "home.html";
 
             }
 
@@ -344,9 +304,6 @@ entryButton.addEventListener(
         requestAnimationFrame(
             animate
         );
-
-    }
-);
 
     }
 );
