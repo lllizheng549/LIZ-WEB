@@ -21,6 +21,37 @@ const doorFrames = [
 
 ];
 
+/*
+   When each door frame appears.
+
+   These percentages represent
+   the progress of the zoom.
+*/
+
+const frameTimes = [
+
+    0.00,
+    0.20,
+    0.40,
+    0.60,
+    0.78
+
+];
+
+
+/*
+   Zoom starts here
+   and ends here.
+*/
+
+const startScale = 1;
+
+const finalScale = 20;
+
+
+/* =========================
+   Click
+========================= */
 
 entryButton.addEventListener("click", function () {
 
@@ -31,78 +62,94 @@ entryButton.addEventListener("click", function () {
     entryButton.style.pointerEvents = "none";
 
 
-    /* =========================
-       Door 01
-    ========================== */
-
-    doorImage.src = doorFrames[0];
+   
+ const startTime =
+        performance.now();
 
 
-    /* =========================
-       Door 02
-    ========================== */
+    function animate(currentTime) {
 
-    setTimeout(function () {
-
-        doorImage.src = doorFrames[1];
-
-        entryScene.classList.add("zoom-1");
-
-    }, 450);
+        const elapsed =
+            currentTime - startTime;
 
 
-    /* =========================
-       Door 03
-    ========================== */
-
-    setTimeout(function () {
-
-        doorImage.src = doorFrames[2];
-
-        entryScene.classList.remove("zoom-1");
-
-        entryScene.classList.add("zoom-2");
-
-    }, 900);
+        const progress =
+            Math.min(
+                elapsed / animationDuration,
+                1
+            );
 
 
-    /* =========================
-       Door 04
-    ========================== */
+        /* =========================
+           Continuous zoom
+        ========================== */
 
-    setTimeout(function () {
-
-        doorImage.src = doorFrames[3];
-
-        entryScene.classList.remove("zoom-2");
-
-        entryScene.classList.add("zoom-3");
-
-    }, 1350);
+        const scale =
+            startScale +
+            (finalScale - startScale)
+            * progress;
 
 
-    /* =========================
-       Final push
-    ========================== */
-
-    setTimeout(function () {
-        doorImage.src = doorFrames[4];
-
-        entryScene.classList.remove("zoom-3");
-
-        entryScene.classList.add("zoom-final");
-
-    }, 1800);
+        entryScene.style.transform =
+            `scale(${scale})`;
 
 
-    /* =========================
-       Homepage
-    ========================== */
+        /* =========================
+           Door frame
+        ========================== */
 
-    setTimeout(function () {
+        let currentFrame = 0;
 
-        window.location.href = "home.html";
 
-    }, 2700);
+        for (
+            let i = 0;
+            i < frameTimes.length;
+            i++
+        ) {
+
+            if (
+                progress >= frameTimes[i]
+            ) {
+
+                currentFrame = i;
+
+            }
+
+        }
+
+
+        doorImage.src =
+            doorFrames[currentFrame];
+
+
+        /* =========================
+           Continue animation
+        ========================== */
+
+        if (progress < 1) {
+
+            requestAnimationFrame(animate);
+
+        } else {
+
+            /*
+              Stay on final white frame
+              for a very short moment,
+              then enter homepage.
+            */
+
+            setTimeout(function () {
+
+                window.location.href =
+                    "home.html";
+
+            }, 250);
+
+        }
+
+    }
+
+
+    requestAnimationFrame(animate);
 
 });
