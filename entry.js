@@ -33,7 +33,7 @@ let isDoorHovering = false;
    3000 = 3 seconds
 */
 
-const animationDuration = 3000;
+const animationDuration = 2500;
 
 
 /* =========================
@@ -58,37 +58,44 @@ doorHotspot.addEventListener(
 
         isDoorHovering = true;
 
-
         /*
-           Clear the previous GIF.
-           This makes sure the next hover
-           starts from frame 1.
+           Start GIF from frame 1
         */
 
-        doorHoverImage.style.opacity = "0";
+        doorHoverImage.style.opacity = "1";
 
-        doorHoverImage.src = "";
+        doorHoverImage.src =
+            doorOpenGif +
+            "?t=" +
+            Date.now();
 
 
-        requestAnimationFrame(function () {
+        /*
+           GIF:
+           25 frames / 30fps
+           ≈ 0.83 seconds
+
+           After playback, hold on door-05.
+        */
+
+        setTimeout(function () {
 
             /*
-               Add a timestamp so the browser
-               treats this as a new GIF load.
+               Make sure the mouse is
+               still inside the door area.
             */
 
-            doorHoverImage.src =
-                doorOpenGif +
-                "?t=" +
-                Date.now();
+            if (isDoorHovering) {
 
-            doorHoverImage.style.opacity = "1";
+                doorHoverImage.src =
+                    "images/entry/door-05.png";
 
-        });
+            }
+
+        }, 850);
 
     }
 );
-
 
 /* =========================
    Door mouse leave
