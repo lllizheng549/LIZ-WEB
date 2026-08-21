@@ -247,7 +247,8 @@ else {
        Door is fully open
        and is now holding on door-05.
 
-       Start Zoom from scale 1.
+       Start Zoom very slowly,
+       then accelerate more and more.
     */
 
     const p =
@@ -266,66 +267,17 @@ else {
 
 
     /*
-       First part:
-       constant speed.
+       Progressive acceleration.
 
-       After that:
-       gradually accelerate.
+       At the beginning:
+       very slow.
+
+       Later:
+       increasingly fast.
     */
 
-    const accelerationStart = 0.25;
-
-    let eased;
-
-
-    if (
-        p <= accelerationStart
-    ) {
-
-        /*
-           Constant speed.
-        */
-
-        eased = p;
-
-    }
-
-    else {
-
-        /*
-           Gradual acceleration.
-        */
-
-        const accelerationProgress =
-            (
-                p -
-                accelerationStart
-            )
-            /
-            (
-                1 -
-                accelerationStart
-            );
-
-
-        const accelerated =
-            accelerationProgress *
-            accelerationProgress;
-
-
-        /*
-           Keep the transition continuous.
-        */
-
-        eased =
-            accelerationStart +
-            (
-                1 -
-                accelerationStart
-            ) *
-            accelerated;
-
-    }
+    const eased =
+        Math.pow(p, 3);
 
 
     scale =
