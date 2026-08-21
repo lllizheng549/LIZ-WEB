@@ -218,42 +218,68 @@ entryButton.addEventListener(
                Continuous zoom
             ========================== */
 
-           let zoomProgress;
+/* =========================
+   Zoom movement
+========================= */
 
-if (progress < 0.10) {
+const openingProgress = 0.333;
+
+
+/*
+   Scale when door is fully open.
+*/
+
+const openingScale = 2.5;
+
+let scale;
+
+
+if (progress <= openingProgress) {
 
     /*
-       Very beginning:
-       door-01 → door-02
+       Door opening stage
 
-       Almost no zoom.
+       Slow and constant movement.
     */
 
-    zoomProgress =
-        progress * 0.15;
+    const p =
+        progress / openingProgress;
+
+    scale =
+        startScale +
+        (openingScale - startScale)
+        * p;
 
 } else {
 
     /*
-       After door-02:
-       gradually continue the zoom.
+       After door-05
+
+       Gradually accelerate.
     */
 
-    const adjustedProgress =
-        (progress - 0.10) / 0.90;
+    const p =
+        (progress - openingProgress)
+        / (1 - openingProgress);
 
-    zoomProgress =
-        0.015 +
-        adjustedProgress * 0.985;
+
+    /*
+       Ease-in curve.
+
+       Starts slowly and gradually
+       becomes faster.
+    */
+
+    const eased =
+        p * p;
+
+
+    scale =
+        openingScale +
+        (finalScale - openingScale)
+        * eased;
 
 }
-
-
-const scale =
-    startScale +
-    (finalScale - startScale)
-    * zoomProgress;
-
 
             entryScene.style.transform =
                 `scale(${scale})`;
