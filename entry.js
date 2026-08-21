@@ -289,8 +289,7 @@ setTimeout(function () {
                 */
 
                 const eased =
-                   Math.pow(p * 1.5);
-
+                    1 - Math.pow(1 - p, 2);
 
                 scale =
                     openingScale +
