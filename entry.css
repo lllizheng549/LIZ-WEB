@@ -50,9 +50,6 @@ body {
 
     transform-origin: 30% 65%;
 
-    transition:
-        transform 0.45s linear;
-
     z-index: 10;
 }
 
@@ -108,25 +105,3 @@ body {
 }
 
 
-/* =========================
-   Zoom animation
-========================= */
-
-.entry-scene.zoom-1 {
-    transform: scale(2);
-}
-
-
-.entry-scene.zoom-2 {
-    transform: scale(4);
-}
-
-
-.entry-scene.zoom-3 {
-    transform: scale(7);
-}
-
-
-.entry-scene.zoom-final {
-    transform: scale(16);
-}
