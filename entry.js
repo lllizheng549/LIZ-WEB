@@ -222,7 +222,7 @@ entryButton.addEventListener(
    Zoom movement
 ========================= */
 
-const openingProgress = 0.333;
+const openingProgress = 1 / 2.5;
 
 
 /*
@@ -231,15 +231,15 @@ const openingProgress = 0.333;
 
 const openingScale = 2.5;
 
+
 let scale;
 
 
 if (progress <= openingProgress) {
 
     /*
-       Door opening stage
-
-       Slow and constant movement.
+       First 1 second:
+       slow and constant.
     */
 
     const p =
@@ -253,9 +253,8 @@ if (progress <= openingProgress) {
 } else {
 
     /*
-       After door-05
-
-       Gradually accelerate.
+       After door-05:
+       smoothly accelerate.
     */
 
     const p =
@@ -264,10 +263,7 @@ if (progress <= openingProgress) {
 
 
     /*
-       Ease-in curve.
-
-       Starts slowly and gradually
-       becomes faster.
+       Smooth acceleration.
     */
 
     const eased =
