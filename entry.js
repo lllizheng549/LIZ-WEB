@@ -160,17 +160,29 @@ entryButton.addEventListener(
 
 
         /*
-           NEW:
-           Start the complete door-opening GIF
-           as the main Entry animation.
-        */
+   Start the complete door-opening GIF
+   as the main Entry animation.
+*/
 
-        doorImage.src =
-            doorOpenGif +
-            "?t=" +
-            Date.now();
+doorImage.src =
+    doorOpenGif +
+    "?t=" +
+    Date.now();
 
 
+/*
+   After the GIF finishes,
+   hold on the final open-door frame.
+*/
+
+setTimeout(function () {
+
+    doorImage.src =
+        "images/entry/door-05.png";
+
+}, 850);
+
+        
         /*
            Disable ENTRY button
            only after the animation starts.
