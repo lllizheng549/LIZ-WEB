@@ -43,6 +43,8 @@ const animationDuration = 4500;
 const doorOpenGif =
     "images/entry/door-open.gif";
 
+const doorGifDuration = 635;
+
 
 /* =========================
    Door hover
@@ -92,7 +94,7 @@ doorHotspot.addEventListener(
 
             }
 
-        }, 850);
+      }, doorGifDuration);
 
     }
 );
@@ -180,8 +182,7 @@ setTimeout(function () {
     doorImage.src =
         "images/entry/door-05.png";
 
-}, 850);
-
+}, doorGifDuration);
         
         /*
            Disable ENTRY button
@@ -222,8 +223,6 @@ setTimeout(function () {
                25 frames / 30fps
                ≈ 0.83 seconds
             */
-
-            const doorGifDuration = 850;
 
 
             /*
