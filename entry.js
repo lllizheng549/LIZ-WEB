@@ -290,7 +290,7 @@ setTimeout(function () {
                 */
 
                 const eased =
-                    p * p;
+                   Math.pow(p * 1.5);
 
 
                 scale =
