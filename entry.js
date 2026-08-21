@@ -120,7 +120,6 @@ doorHotspot.addEventListener(
 
 const doorFrames = [
 
-    "images/entry/door-01.png",
     "images/entry/door-02.png",
     "images/entry/door-03.png",
     "images/entry/door-04.png",
@@ -129,15 +128,16 @@ const doorFrames = [
 ];
 
 
+
+
 const frameTimes = [
-
     0.00,
-    0.20,
-    0.40,
-    0.60,
-    0.78
-
+    0.083,
+    0.167,
+    0.250,
 ];
+
+
 
 
 /* =========================
