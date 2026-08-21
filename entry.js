@@ -33,7 +33,7 @@ let isDoorHovering = false;
    3000 = 3 seconds
 */
 
-const animationDuration = 4500;
+const animationDuration = 3500;
 
 
 /* =========================
