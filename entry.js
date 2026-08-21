@@ -277,7 +277,7 @@ else {
     */
 
     const eased =
-        Math.pow(p, 3);
+        Math.pow(p, 3.5);
 
 
     scale =
