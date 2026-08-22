@@ -146,23 +146,3 @@ body {
         scale(1.06);
 }
 
-/* =========================
-   Custom Cursor
-========================= */
-body {
-    cursor: url("images/squid-normal.png") 48 48, auto;
-}
-
-.door-hotspot:hover {
-    cursor: url("images/squid-hover.png") 48 48, auto;
-}
-
-.door-hotspot:hover {
-    cursor: url("images/squid-hover.png") 48 48, auto;
-}
-
-.clickable:hover {
-    cursor: url("images/squid-hover.png") 48 48, auto;
-}
-
-cursor: url("images/squid-normal.png") 10 10, auto;
