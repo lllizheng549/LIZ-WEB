@@ -183,10 +183,6 @@ body {
     cursor: url("images/squid-hover.png") 48 48, auto;
 }
 
-.door-hotspot:hover {
-    cursor: url("images/squid-hover.png") 48 48, auto;
-}
-
 .clickable:hover {
     cursor: url("images/squid-hover.png") 48 48, auto;
 }
