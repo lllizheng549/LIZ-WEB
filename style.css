@@ -197,5 +197,7 @@ body {
     cursor: url("images/squid-hover.png") 6 6, auto;
 }
 
-
+.menu-button:hover {
+    cursor: url("images/squid-hover.png") 6px 6px, auto;
+}
 
