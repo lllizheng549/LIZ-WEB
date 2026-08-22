@@ -176,7 +176,7 @@ body {
    Custom Cursor
 ========================= */
 body {
-    cursor: url("images/squid-normal.png") 48 48, auto;
+    cursor: crosshair;
 }
 
 .door-hotspot:hover {
@@ -191,5 +191,5 @@ body {
     cursor: url("images/squid-hover.png") 48 48, auto;
 }
 
-cursor: url("images/squid-normal.png") 10 10, auto;
+
 
