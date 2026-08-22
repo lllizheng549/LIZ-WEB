@@ -173,6 +173,16 @@ body {
 
 
 /* =========================
+define button
+========================= */
+a:hover,
+button:hover,
+[role="button"]:hover,
+.clickable:hover {
+    cursor: url("images/squid-hover.png") 6px 6px, auto;
+}
+
+/* =========================
    Custom Cursor
 ========================= */
 body {
