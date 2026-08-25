@@ -176,13 +176,18 @@ body {
 /* =========================
    Custom Cursor
 ========================= */
+
 body {
     cursor: url("images/squid-normal.png") 6px 6px, auto;
 }
-.door-hotspot:hover,
+
+a:hover,
+button:hover,
+[role="button"]:hover,
 .clickable:hover,
-.menu-button:hover,
-.side-menu a:hover {
+.door-hotspot:hover {
+    cursor: url("images/squid-hover.png") 6px 6px, auto;
+}
     cursor: url("images/squid-hover.png") 6px 6px, auto;
 }
 
