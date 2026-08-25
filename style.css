@@ -189,9 +189,3 @@ body {
     cursor: url("images/squid-normal.png") 6px 6px, auto;
 }
 
-.door-hotspot:hover,
-.clickable:hover,
-.menu-button:hover,
-.side-menu a:hover {
-    cursor: url("images/squid-hover.png") 6px 6px, auto;
-}
