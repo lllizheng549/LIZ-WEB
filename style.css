@@ -186,18 +186,13 @@ button:hover,
    Custom Cursor
 ========================= */
 body {
-    cursor: url("images/squid-normal.png") 6 6, auto;
+    cursor: url("images/squid-normal.png") 6px 6px, auto;
 }
 
-.door-hotspot:hover {
-    cursor: url("images/squid-hover.png") 6 6, auto;
-}
-
-.clickable:hover {
-    cursor: url("images/squid-hover.png") 6 6, auto;
-}
-
-.menu-button:hover {
+.door-hotspot:hover,
+.clickable:hover,
+.menu-button:hover,
+.side-menu a:hover {
     cursor: url("images/squid-hover.png") 6px 6px, auto;
 }
 
