@@ -177,16 +177,22 @@ body {
    Custom Cursor
 ========================= */
 
+/* =========================
+   LIZ Custom Cursor
+========================= */
+
+html,
 body {
-    cursor: url("images/squid-normal.png") 6px 6px, auto;
+    cursor: url("images/squid-normal.png") 6px 6px, auto !important;
 }
 
-a:hover,
-button:hover,
-[role="button"]:hover,
-.clickable:hover,
-.door-hotspot:hover {
-    cursor: url("images/squid-hover.png") 6px 6px, auto;
+a,
+button,
+[role="button"],
+.clickable,
+.door-hotspot,
+.menu-button {
+    cursor: url("images/squid-hover.png") 6px 6px, pointer !important;
 }
     cursor: url("images/squid-hover.png") 6px 6px, auto;
 }
