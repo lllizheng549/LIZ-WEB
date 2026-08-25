@@ -183,7 +183,7 @@ body {
 
 html,
 body {
-    cursor: url("images/squid-normal.png") 6px 6px, auto !important;
+    cursor: url("images/squid-normal.png") 6 6, auto;
 }
 
 a,
@@ -192,7 +192,7 @@ button,
 .clickable,
 .door-hotspot,
 .menu-button {
-    cursor: url("images/squid-hover.png") 6px 6px, pointer !important;
+    cursor: url("images/squid-hover.png") 6 6, pointer;
 }
     cursor: url("images/squid-hover.png") 6px 6px, auto;
 }
