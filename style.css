@@ -279,7 +279,7 @@ button,
    Product
 ========================= */
 
-.home-production {
+.home-product {
     position: absolute;
 
     left: 30%;
@@ -292,7 +292,7 @@ button,
     display: block;
 }
 
-.home-production img {
+.home-product img {
     width: 100%;
 }
 
@@ -385,7 +385,7 @@ button,
 ========================= */
 
 .home-me,
-.home-production,
+.home-product,
 .home-arc,
 .home-craft,
 .home-illustration {
