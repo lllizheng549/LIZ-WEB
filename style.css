@@ -195,3 +195,240 @@ button,
     cursor: url("images/squid-hover.png") 6 6, pointer;
 }
 
+/* =========================
+   Home Scene
+========================= */
+
+.main-content {
+    width: 100%;
+    min-height: 100vh;
+
+    position: relative;
+
+    display: block;
+}
+
+
+/* =========================
+   Home Scene Container
+========================= */
+
+.home-scene {
+    position: absolute;
+
+    /*
+       Home scene occupies the right side
+       of the page, leaving space for the menu.
+    */
+
+    left: 180px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   Home Images - Basic
+========================= */
+
+.home-scene img {
+    position: absolute;
+
+    display: block;
+
+    max-width: none;
+
+    user-select: none;
+}
+
+
+/* =========================
+   Ground Line
+========================= */
+
+.home-line {
+    left: 0;
+    bottom: 18%;
+
+    width: 100%;
+
+    z-index: 1;
+}
+
+
+/* =========================
+   Cat
+========================= */
+
+.home-cat {
+    left: 30%;
+    bottom: 18%;
+
+    width: 14%;
+
+    z-index: 5;
+}
+
+
+/* =========================
+   Craft
+========================= */
+
+.home-craft {
+    position: absolute;
+
+    left: 48%;
+    bottom: 18%;
+
+    width: 30%;
+
+    z-index: 4;
+
+    display: block;
+}
+
+.home-craft img {
+    position: relative;
+
+    width: 100%;
+}
+
+
+/* =========================
+   Illustration
+========================= */
+
+.home-illustration {
+    position: absolute;
+
+    left: 42%;
+    bottom: 18%;
+
+    width: 16%;
+
+    z-index: 3;
+
+    display: block;
+}
+
+.home-illustration img {
+    position: relative;
+
+    width: 100%;
+}
+
+
+/* =========================
+   Architecture
+========================= */
+
+.home-arc {
+    position: absolute;
+
+    left: 24%;
+    bottom: 18%;
+
+    width: 12%;
+
+    z-index: 3;
+
+    display: block;
+}
+
+.home-arc img {
+    position: relative;
+
+    width: 100%;
+}
+
+
+/* =========================
+   Product
+========================= */
+
+.home-production {
+    position: absolute;
+
+    left: 35%;
+    bottom: 18%;
+
+    width: 8%;
+
+    z-index: 3;
+
+    display: block;
+}
+
+.home-production img {
+    position: relative;
+
+    width: 100%;
+}
+
+
+/* =========================
+   About Me
+========================= */
+
+.home-me {
+    position: absolute;
+
+    left: 52%;
+    bottom: 18%;
+
+    width: 20%;
+
+    z-index: 6;
+
+    display: block;
+}
+
+.home-me img {
+    position: relative;
+
+    width: 100%;
+}
+
+
+/* =========================
+   Home Clickable Images
+========================= */
+
+.home-craft,
+.home-illustration,
+.home-arc,
+.home-production,
+.home-me {
+    cursor: url("images/squid-hover.png") 6 6, pointer;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 600px) {
+
+    .home-scene {
+        left: 0;
+    }
+
+    .home-line {
+        bottom: 12%;
+    }
+
+    .home-cat {
+        bottom: 12%;
+    }
+
+    .home-craft,
+    .home-illustration,
+    .home-arc,
+    .home-production,
+    .home-me {
+        bottom: 12%;
+    }
+}
