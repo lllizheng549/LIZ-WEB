@@ -343,7 +343,8 @@ button,
     left: 51%;
     bottom: 18%;
 
-    width: 10%;
+    /* 原来 10%，放大 */
+    width: 13%;
 
     z-index: 3;
 
@@ -385,10 +386,14 @@ button,
 .home-illustrate {
     position: absolute;
 
-    left: 73%;
-    bottom: 34%;
+    /* 比原来更靠右 */
+    left: 76%;
 
-    width: 10%;
+    /* 比原来更靠上 */
+    bottom: 38%;
+
+    /* 比原来小 */
+    width: 7%;
 
     z-index: 6;
 
@@ -398,7 +403,6 @@ button,
 .home-illustrate img {
     width: 100%;
 }
-
 
 /* =========================
    Clickable Home Items
@@ -428,14 +432,14 @@ button,
     }
 
     .home-me,
-    .home-production,
+    .home-product,
     .home-cat,
     .home-arc,
     .home-craft {
         bottom: 12%;
     }
 
-    .home-illustration {
+    .home-illustrate {
         bottom: 38%;
     }
 }
