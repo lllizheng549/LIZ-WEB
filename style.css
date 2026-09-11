@@ -201,11 +201,13 @@ button,
 
 .main-content {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
 
     position: relative;
 
     display: block;
+
+    overflow: hidden;
 }
 
 
@@ -216,12 +218,29 @@ button,
 .home-scene {
     position: absolute;
 
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    inset: 0;
 
     overflow: hidden;
+}
+
+
+/* =========================
+   Home Stage
+   Fixed proportion: 16:9
+========================= */
+
+.home-stage {
+    position: absolute;
+
+    width: min(100vw, calc(100vh * 16 / 9));
+    aspect-ratio: 16 / 9;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    overflow: visible;
 }
 
 
@@ -229,9 +248,11 @@ button,
    Home Images
 ========================= */
 
-.home-scene img {
+.home-stage img {
     display: block;
+
     max-width: none;
+
     user-select: none;
 }
 
@@ -254,19 +275,21 @@ button,
 
 /* =========================
    Me
-   LEFT
 ========================= */
 
 .home-me {
     position: absolute;
+
     left: 18%;
     bottom: 18%;
 
     width: 8%;
 
     z-index: 3;
+
     display: block;
 }
+
 .home-me img {
     width: 100%;
 }
@@ -278,12 +301,14 @@ button,
 
 .home-product {
     position: absolute;
+
     left: 29%;
     bottom: 18%;
 
     width: 6%;
 
     z-index: 3;
+
     display: block;
 }
 
@@ -298,6 +323,7 @@ button,
 
 .home-cat {
     position: absolute;
+
     left: 39%;
     bottom: 18%;
 
@@ -313,12 +339,14 @@ button,
 
 .home-arc {
     position: absolute;
+
     left: 51%;
     bottom: 18%;
 
     width: 10%;
 
     z-index: 3;
+
     display: block;
 }
 
@@ -333,12 +361,14 @@ button,
 
 .home-craft {
     position: absolute;
+
     left: 61%;
     bottom: 17%;
 
     width: 20%;
 
     z-index: 4;
+
     display: block;
 }
 
@@ -348,11 +378,11 @@ button,
 
 
 /* =========================
-   Illustration
+   Illustrate
    ABOVE + RIGHT OF CRAFT
 ========================= */
 
-.home-illustration {
+.home-illustrate {
     position: absolute;
 
     left: 73%;
@@ -361,10 +391,11 @@ button,
     width: 10%;
 
     z-index: 6;
+
     display: block;
 }
 
-.home-illustration img {
+.home-illustrate img {
     width: 100%;
 }
 
@@ -377,7 +408,7 @@ button,
 .home-product,
 .home-arc,
 .home-craft,
-.home-illustration {
+.home-illustrate {
     cursor: url("images/squid-hover.png") 6 6, pointer;
 }
 
