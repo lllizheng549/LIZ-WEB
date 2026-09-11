@@ -450,7 +450,7 @@ button,
 ========================= */
 偏移设定
 .home-line {
-    --depth: 1.3;
+    --depth: 1.2;
 }
 
 .home-me,
@@ -459,5 +459,5 @@ button,
 .home-arc,
 .home-craft,
 .home-illustration{
-    --depth: 0.9;
+    --depth: 0.8;
 }
