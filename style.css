@@ -387,13 +387,13 @@ button,
     position: absolute;
 
     /* 比原来更靠右 */
-    left: 76%;
+    left: 74%;
 
     /* 比原来更靠上 */
-    bottom: 38%;
+    bottom: 34%;
 
     /* 比原来小 */
-    width: 7%;
+    width: 9%;
 
     z-index: 6;
 
