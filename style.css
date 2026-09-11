@@ -280,7 +280,7 @@ button,
 .home-me {
     position: absolute;
 
-    left: 18%;
+    left: 20%;
     bottom: 18%;
 
     width: 8%;
@@ -302,7 +302,7 @@ button,
 .home-product {
     position: absolute;
 
-    left: 29%;
+    left: 33%;
     bottom: 18%;
 
     width: 6%;
@@ -324,7 +324,7 @@ button,
 .home-cat {
     position: absolute;
 
-    left: 39%;
+    left: 42%;
     bottom: 18%;
 
     width: 9%;
@@ -387,10 +387,10 @@ button,
     position: absolute;
 
     /* 比原来更靠右 */
-    left: 74%;
+    left: 72%;
 
     /* 比原来更靠上 */
-    bottom: 34%;
+    bottom: 32%;
 
     /* 比原来小 */
     width: 9%;
