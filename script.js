@@ -2,15 +2,24 @@ const menuButton = document.getElementById("menuButton");
 const sideMenu = document.getElementById("sideMenu");
 
 
-// Open / Close menu
+// Open menu / Second click → Home
 menuButton.addEventListener("click", function (event) {
 
     event.stopPropagation();
 
-    sideMenu.classList.toggle("open");
+    if (!sideMenu.classList.contains("open")) {
+
+        // First click → open menu
+        sideMenu.classList.add("open");
+
+    } else {
+
+        // Second click → go Home
+        window.location.href = "index.html";
+
+    }
 
 });
-
 
 // Click outside menu → close
 document.addEventListener("click", function (event) {
