@@ -69,7 +69,7 @@ if (homeStage) {
     function animateParallax() {
 
         // 缓慢追随鼠标
-        currentX += (targetX - currentX) * 0.06;
+        currentX += (-targetX - currentX) * 0.06;
 
         parallaxItems.forEach((item) => {
 
