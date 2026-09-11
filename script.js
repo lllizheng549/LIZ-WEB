@@ -49,7 +49,7 @@ const homeStage = document.querySelector(".home-stage");
 if (homeStage) {
 
     const parallaxItems = homeStage.querySelectorAll(
-        ".home-line, .home-me, .home-product, .home-cat, .home-arc, .home-craft, .home-illustrate"
+        ".home-line, .home-me, .home-product, .home-cat, .home-arc, .home-craft, .home-illustration"
     );
 
     let targetX = 0;
