@@ -137,6 +137,9 @@ body {
     height: 16px;
 }
 
+.about-links a {
+    display: block;
+}
 
 
 /* =========================
