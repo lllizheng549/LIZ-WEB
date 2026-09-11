@@ -104,6 +104,17 @@ body {
     transition: opacity 0.2s ease;
 }
 
+.menu-content {
+    color: #111111;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    line-height: 1.2;
+
+    transition: opacity 0.2s ease;
+}
+
 .menu-content .large {
     font-size: 23px;
 }
