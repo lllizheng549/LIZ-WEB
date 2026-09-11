@@ -379,11 +379,11 @@ button,
 
 
 /* =========================
-   Illustrate
+   illustration
    ABOVE + RIGHT OF CRAFT
 ========================= */
 
-.home-illustrate {
+.home-illustration {
     position: absolute;
 
     /* 比原来更靠右 */
@@ -400,7 +400,7 @@ button,
     display: block;
 }
 
-.home-illustrate img {
+.home-illustration img {
     width: 100%;
 }
 
@@ -412,7 +412,7 @@ button,
 .home-product,
 .home-arc,
 .home-craft,
-.home-illustrate {
+.home-illustration {
     cursor: url("images/squid-hover.png") 6 6, pointer;
 }
 
@@ -439,7 +439,7 @@ button,
         bottom: 12%;
     }
 
-    .home-illustrate {
+    .home-illustration {
         bottom: 38%;
     }
 }
