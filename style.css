@@ -390,7 +390,7 @@ button,
     left: 72%;
 
     /* 比原来更靠上 */
-    bottom: 32%;
+    bottom: 33%;
 
     /* 比原来小 */
     width: 9%;
@@ -442,4 +442,22 @@ button,
     .home-illustration {
         bottom: 38%;
     }
+}
+
+
+/* =========================
+   Home Parallax
+========================= */
+偏移设定
+.home-line {
+    --depth: 0.5;
+}
+
+.home-me,
+.home-product,
+.home-cat,
+.home-arc,
+.home-craft,
+.home-illustrate{
+    --depth: 0.9;
 }
