@@ -15,7 +15,7 @@ menuButton.addEventListener("click", function (event) {
     } else {
 
         // Second click → go Home
-        window.location.href = "index.html";
+        window.location.href = "home.html";
 
     }
 
